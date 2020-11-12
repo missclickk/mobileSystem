@@ -7,4 +7,10 @@
     <item
         android:id="@+id/open_history_item"
         android:title="open history" />
+    <item
+        android:id="@+id/open_backproc_item"
+        android:title="background process" />
+    <item
+        android:id="@+id/open_reference"
+        android:title="reference" />
 </menu>

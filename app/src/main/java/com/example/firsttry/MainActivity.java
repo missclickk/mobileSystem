@@ -13,7 +13,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import java.util.ArrayList;
+import java.util.Locale;
 
+import android.net.Uri;
 //TOAST 
 public class MainActivity extends AppCompatActivity {
     private Button switchButton;
@@ -85,10 +87,24 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+
         switch (item.getItemId()){
             case R.id.open_history_item:
-                Intent intent = new Intent(this, HistoryList.class);
+                intent = new Intent(this, HistoryList.class);
                 intent.putParcelableArrayListExtra(HISTORY_KEY,history);
+                startActivity(intent);
+                break;
+            case R.id.open_backproc_item:
+                intent= new Intent(this, BackgroundProcessActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.open_reference:
+                Locale current = getResources().getConfiguration().locale;
+                String len=current.toString().split("_")[0];
+                String link=Link.creteLocalLinkToWikipedia(len);
+                intent= new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(link));
                 startActivity(intent);
                 break;
         }
