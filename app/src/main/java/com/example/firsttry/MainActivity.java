@@ -91,12 +91,13 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.open_history_item:
+
                 intent = new Intent(this, HistoryList.class);
                 intent.putParcelableArrayListExtra(HISTORY_KEY,history);
                 startActivity(intent);
                 break;
             case R.id.open_backproc_item:
-                intent= new Intent(this, BackgroundProcessActivity.class);
+                intent= new Intent(this, ServiceActivity.class);
                 startActivity(intent);
                 break;
             case R.id.open_reference:

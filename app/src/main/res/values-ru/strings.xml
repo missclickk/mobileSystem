@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">1 попытка</string>
     <string name="action_settings">Settings</string>
+    <string name="process_start">процесс запущен</string>
+    <string name="process_stop">процесс остановлен</string>
+    <string name="rand_number">случайное число:</string>
 </resources>
