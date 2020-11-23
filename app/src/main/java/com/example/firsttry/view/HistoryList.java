@@ -1,39 +1,41 @@
-package com.example.firsttry;
+package com.example.firsttry.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import java.util.ArrayList;
+import com.example.firsttry.R;
+import com.example.firsttry.model.HistoryDB;
+import com.example.firsttry.viewmodel.ChangeSettings;
+
+
 
 
 public class HistoryList extends AppCompatActivity {
-
-
     HistoryAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_list);
+
+
         Intent intent = getIntent();
         adapter = new HistoryAdapter();
         if(intent!=null && intent.hasExtra(MainActivity.HISTORY_KEY)) {
-            ArrayList<HistoryItem> qs=intent.getParcelableArrayListExtra(MainActivity.HISTORY_KEY);
-            adapter.initialize(qs);
+            System.out.println("help me...");
+            adapter.initialize(intent.<HistoryDB>getParcelableArrayListExtra(MainActivity.HISTORY_KEY));
         }
             RecyclerView   historyList = findViewById(R.id.rvHistory);
             historyList.setLayoutManager(new LinearLayoutManager(this));
             historyList.setAdapter(adapter);
-
-
     }
-
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add("back");
@@ -49,19 +51,3 @@ public class HistoryList extends AppCompatActivity {
         return true;
     }
 }
-/*
-    @Override
-
-
-        Intent intent = getIntent();
-
-        adapter = new HistoryListAdapter();
-        if(intent!=null && intent.hasExtra(MainActivity.HISTORY_KEY)){
-            adapter.initialize(intent.getParcelableArrayListExtra(MainActivity.HISTORY_KEY));
-    }
-
-        RecyclerView recyclerView = findViewById(R.id.historyList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
-    }
- */

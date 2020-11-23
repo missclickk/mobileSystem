@@ -1,8 +1,12 @@
-package com.example.firsttry;
+package com.example.firsttry.view;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +14,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import java.util.Vector;
+
+import com.example.firsttry.viewmodel.ChangeSettings;
+import com.example.firsttry.R;
+import com.example.firsttry.model.HistoryDB;
+
+
 
 public class ArgbFragment extends Fragment {
     private LinearLayout colorOutput;
@@ -20,9 +29,12 @@ public class ArgbFragment extends Fragment {
         return new ArgbFragment();
     }
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_argb, container, false);
+
+        ConstraintLayout lay=view.findViewById(R.id.lay);
+        ChangeSettings.getTextSize(lay,view.getContext());
+
         startButton=view.findViewById(R.id.startArgb);
         numA=view.findViewById(R.id.numAlpha);
         numR=view.findViewById(R.id.numR);
@@ -55,6 +67,6 @@ public class ArgbFragment extends Fragment {
         String gString = String.format("%1d",G);
         String bString = String.format("%1d",B);
         MainActivity parent = (MainActivity)getActivity();
-        parent.addToHistory(new HistoryItem(aString,rString,gString, bString));
+        parent.addToHistory(new HistoryDB(aString,rString,gString, bString));
     }
 }

@@ -13,14 +13,14 @@
 
         <fragment
             android:id="@+id/fragment4"
-            android:name="com.example.firsttry.RgbFragment"
+            android:name="com.example.firsttry.view.RgbFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
         <fragment
             android:id="@+id/fragment3"
-            android:name="com.example.firsttry.ArgbFragment"
+            android:name="com.example.firsttry.view.ArgbFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" />

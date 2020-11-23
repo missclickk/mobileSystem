@@ -1,17 +1,23 @@
-package com.example.firsttry;
+package com.example.firsttry.view;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+
+import com.example.firsttry.viewmodel.ChangeSettings;
+import com.example.firsttry.viewmodel.Paint;
+import com.example.firsttry.R;
+import com.example.firsttry.model.HistoryDB;
+
 
 
 public class RgbFragment extends Fragment {
@@ -24,9 +30,12 @@ public class RgbFragment extends Fragment {
     @Override
 
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_rgb, container, false);
+
+        ConstraintLayout lay=view.findViewById(R.id.test);
+        ChangeSettings.getTextSize(lay,view.getContext());
+
         colorOutput=view.findViewById(R.id.colorOutput);
         numR=view.findViewById(R.id.numR);
         numG=view.findViewById(R.id.numG);
@@ -38,8 +47,8 @@ public class RgbFragment extends Fragment {
                     int G = Integer.parseInt(numG.getText().toString());
                     int B = Integer.parseInt(numB.getText().toString());
                     addHistoryItem(R, G, B);
-                   Paint.changeBackGroundColor(colorOutput,R,G,B);
-//
+                    Paint.changeBackGroundColor(colorOutput,R,G,B);
+
                 }
             }
         );
@@ -47,13 +56,12 @@ public class RgbFragment extends Fragment {
 
     }
     private void addHistoryItem(int R,int G,int B){
-        //bad style, but will stay till lab7
         String rString = String.format("%1d",R);
         String gString = String.format("%1d",G);
         String bString = String.format("%1d",B);
 
         MainActivity parent = (MainActivity)getActivity();
-        parent.addToHistory(new HistoryItem(rString,gString, bString));
+        parent.addToHistory(new HistoryDB("",rString,gString, bString));
     }
 }
 

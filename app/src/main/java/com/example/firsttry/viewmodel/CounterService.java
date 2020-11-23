@@ -1,9 +1,11 @@
-package com.example.firsttry;
+package com.example.firsttry.viewmodel;
 
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+
+import com.example.firsttry.view.ServiceActivity;
 
 import java.util.Random;
 

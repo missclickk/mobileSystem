@@ -1,7 +1,18 @@
 <resources>
+    <string name="first_fragment_label">первый фрагмент</string>
+    <string name="second_fragment_label">2 фрагмент</string>
     <string name="app_name">1 попытка</string>
     <string name="action_settings">Settings</string>
     <string name="process_start">процесс запущен</string>
     <string name="process_stop">процесс остановлен</string>
-    <string name="rand_number">случайное число:</string>
+    <string name="rand_number">случайное число: %d</string>
+    <string name="switch_to_rgb">ИЗМЕНИТЬ НА RGB</string>
+    <string name="switch_to_argb">ИЗМЕНИТЬ НА ARGB</string>
+    <string name="switch_to_all">ИЗМЕНИТЬ НА ВСЁ</string>
+    <string name="start">СТАРТ</string>
+    <string name="stop">СТОП</string>
+    <string name="negative_button">НАЖМИ НА МЕНЯ</string>
+    <string name="getDataFromDb">ПОЛУЧИТЬ ИНФОРМАЦИЮ ИЗ БАЗЫ ДАННЫХ</string>
+    <string name="deleteDataFromDB">УДАЛИТЬ ИНФОРМАЦИЮ ИЗ БАЗЫ ДАННЫХ</string>
+    <string name="clearTextView">СТЕРЕТЬ ТЕКСТ</string>
 </resources>

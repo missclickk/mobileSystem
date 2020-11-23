@@ -1,4 +1,4 @@
-package com.example.firsttry;
+package com.example.firsttry.view;
 
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -8,10 +8,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.firsttry.viewmodel.CounterService;
+import com.example.firsttry.viewmodel.Files;
+import com.example.firsttry.R;
 
 public class ServiceActivity extends AppCompatActivity {
 
@@ -32,7 +37,7 @@ public class ServiceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_service);
         Button start = findViewById(R.id.start_service_button);
         Button stop = findViewById(R.id.stop_service_button);
-
+        Button last=findViewById(R.id.last);
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,6 +48,14 @@ public class ServiceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 stopService();
+            }
+        });
+        last.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Files files=new Files(getApplicationContext());
+                TextView text=findViewById(R.id.randNumberInput);
+                text.setText(files.readFile());
             }
         });
     }
@@ -66,14 +79,17 @@ public class ServiceActivity extends AppCompatActivity {
         if (requestCode == COUNTER_SERVICE) {
             switch (resultCode) {
                 case COUNTER_START:
-                    Toast.makeText(this, "getResources().getString(R.string.service_started)", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getResources().getString(R.string.process_start), Toast.LENGTH_SHORT).show();
                     break;
                 case COUNTER_ANSWER:
-                    int counter = data.getIntExtra(COUNTER_ANSWER_KEY, 0);
-                    Toast.makeText(this, Integer.toString(counter), Toast.LENGTH_SHORT).show();
+                    int randNumber = data.getIntExtra(COUNTER_ANSWER_KEY, 0);
+                    Toast.makeText(this, getResources().getString(R.string.rand_number, randNumber), Toast.LENGTH_SHORT).show();
+                    Files files=new Files(getApplicationContext());
+                    files.writeFile(randNumber);
+
                     break;
                 case COUNTER_FINISH:
-                    Toast.makeText(this, "getResources().getString(R.string.service_stopped)", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getResources().getString(R.string.process_stop), Toast.LENGTH_SHORT).show();
                     break;
             }
         }

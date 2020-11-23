@@ -3,13 +3,27 @@
     <string name="action_settings">Settings</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
-    <string name="title_activity_reference">ReferenceActivity</string>
+    <string name="title_activity_reference" translatable="false">ReferenceActivity</string>
+    <string name="second_fragment_label">2 фрагмент</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="first_fragment_label">first fragment</string>>
     <string name="process_start">process start</string>
     <string name="process_stop">process stop</string>
-    <string name="rand_number">random number:</string>
+    <string name="rand_number">random number: %d</string>
+    <string name="switch_to_rgb">SWITCH TO RGB</string>
+    <string name="switch_to_argb">SWITCH TO ARGB</string>
+    <string name="switch_to_all">SWITCH TO ALL</string>
+    <string name="negative_button">PUSH ME</string>
+    <string name="start">START</string>
+    <string name="stop">STOP</string>
+    <string name="getDataFromDb">GET DATA FROM DATABASE</string>
+    <string name="deleteDataFromDB">DELETE DATA FROM DATABASE</string>
+    <string name="clearTextView">CLEAN TEXT</string>
+    <string-array name="size">
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+    </string-array>
+    >
 </resources>
