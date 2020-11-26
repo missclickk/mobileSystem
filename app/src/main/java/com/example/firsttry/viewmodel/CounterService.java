@@ -23,8 +23,7 @@ public class CounterService extends Service {
 
     public int onStartCommand(Intent intent, int flags, int startId) {
         PendingIntent pendingIntent = intent.getParcelableExtra(ServiceActivity.PENDING_INTENT_KEY);
-           int randMax=intent.getIntExtra(ServiceActivity.RAND_MAX,1);
-        task = new MyTask(pendingIntent,randMax);
+        task = new MyTask(pendingIntent);
         startWork();
         return super.onStartCommand(intent, flags, startId);
     }
@@ -48,11 +47,9 @@ public class CounterService extends Service {
 
         private boolean exit;
         private PendingIntent pendingIntent;
-        private int randMax;
 
-        MyTask(PendingIntent pendingIntent,int randMax) {
+        MyTask(PendingIntent pendingIntent) {
             this.pendingIntent = pendingIntent;
-            this.randMax=randMax;
         }
 
         @Override
@@ -60,11 +57,16 @@ public class CounterService extends Service {
             talkToCreator(new Intent(), ServiceActivity.COUNTER_START);
 
             exit = false;
-
+            Integer previosNumber=1;
+            Integer i=1;
             final int VERY_MUCH = 100000;
-            for(int i=0;i<VERY_MUCH && !exit;i++){
-
-                talkToCreator(new Intent().putExtra(ServiceActivity.COUNTER_ANSWER_KEY, new Random().nextInt((randMax))),
+            while(i<VERY_MUCH && !exit)
+            {
+                int buf=i;
+                i+=previosNumber;
+                previosNumber=buf;
+               int[] bufArr= {i,previosNumber};
+                talkToCreator(new Intent().putExtra(ServiceActivity.COUNTER_ANSWER_KEY,bufArr),
                         ServiceActivity.COUNTER_ANSWER);
 
                 try{

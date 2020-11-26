@@ -27,6 +27,26 @@ public class ChangeSettings {
         return buf;
     }
 
+    public static  int[] getMenuElements(Context context){
+        final String APP_PREFERENCE="settings";
+        SharedPreferences settings =context.getSharedPreferences(APP_PREFERENCE, Context.MODE_PRIVATE);
+        Integer elements = settings.getInt(SettingsActivity.APP_PREFERENCE_MENU_ELEMENTS, 0);
+        int array[]={0,0,0,0};
+        int i=0;
+        while(elements>0){
+            if(elements%2==1)
+                array[i]=1;
+            elements/=2;
+            i++;
+        }
+        for(int elem:array) {
+            System.out.println("////");
+            System.out.println(elem);
+        }
+        return array;
+    }
+
+
     public static  void getTextSize(ViewGroup lay,Context context){
         final String APP_PREFERENCE="settings";
         SharedPreferences settings =context.getSharedPreferences(APP_PREFERENCE, Context.MODE_PRIVATE);

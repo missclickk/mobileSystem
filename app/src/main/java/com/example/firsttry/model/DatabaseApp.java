@@ -8,7 +8,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {HistoryDB.class},version = 2)
+@Database(entities = {HistoryDB.class,ServiceDB.class},version = 3)
 public abstract class DatabaseApp extends RoomDatabase {
     private static final Object LOCK = new Object();
     private static final String DATABASE_NAME = "local_data";
@@ -31,4 +31,5 @@ public abstract class DatabaseApp extends RoomDatabase {
     }
 
     public abstract HistoryDao historyDao();
+    public abstract ServiceDao serviceDao();
 }

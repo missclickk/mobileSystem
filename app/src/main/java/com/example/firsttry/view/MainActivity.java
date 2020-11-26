@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private final int ARGB_KEY=2;
     private final int ALL_FRAGMENT_KEY=3;
     private   int fragment_key=1;
-
+    private int[]menuHideElements;
 
     private ConstraintLayout lay;
     @Override
@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         });
         ConstraintLayout lay=findViewById(R.id.lay);
         ChangeSettings.getTextSize(lay,getApplicationContext());
+        menuHideElements=ChangeSettings.getMenuElements(getApplicationContext());
       }
 
 
@@ -117,6 +118,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
            getMenuInflater().inflate(R.menu.menu_main, menu);
+           for(int i=0;i<menu.size()-1;i++)
+               if(menuHideElements[i]==1)
+                   menu.getItem(i).setVisible(false);
            return true;
     }
     @Override
@@ -160,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected  void onResume(){
         super.onResume();
+        menuHideElements= ChangeSettings.getMenuElements(getApplicationContext());
         ConstraintLayout lay=findViewById(R.id.lay);
         ChangeSettings.getTextSize(lay,getApplicationContext());
     }

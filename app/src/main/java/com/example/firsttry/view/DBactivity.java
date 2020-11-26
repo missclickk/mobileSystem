@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.firsttry.viewmodel.HistoryFacade;
 import com.example.firsttry.R;
+import com.example.firsttry.viewmodel.ServiceFacade;
 
 public class DBactivity extends AppCompatActivity {
     TextView text;
@@ -19,7 +20,7 @@ public class DBactivity extends AppCompatActivity {
         Button getButton=findViewById(R.id.get_db_data_button);
         Button delButton=findViewById(R.id.delete_db_data_button);
         Button cleanButton=findViewById(R.id.clean_text_button);
-
+        Button getServiceButton=findViewById(R.id.get_db_service_data);
         getButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -38,6 +39,13 @@ public class DBactivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 cleanText();
+            }
+        });
+        getServiceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                text=findViewById(R.id.text_area);
+                text.setText(ServiceFacade.getAll(getBaseContext()));
             }
         });
     }

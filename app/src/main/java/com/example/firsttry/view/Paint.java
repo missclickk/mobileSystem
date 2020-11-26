@@ -1,4 +1,4 @@
-package com.example.firsttry.viewmodel;
+package com.example.firsttry.view;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;

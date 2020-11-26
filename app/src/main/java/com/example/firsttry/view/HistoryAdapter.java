@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.firsttry.viewmodel.Paint;
 import com.example.firsttry.R;
 import com.example.firsttry.model.HistoryDB;
 
@@ -79,7 +78,6 @@ public class HistoryAdapter extends   RecyclerView.Adapter<HistoryAdapter.Histor
                         int R = Integer.parseInt(historyDB.getR());
                         int G = Integer.parseInt(historyDB.getG());
                         int B = Integer.parseInt(historyDB.getB());
-                        //System.out.println(R);
                         Paint.changeBackGroundColor(colorBlock,255-R, 255-G, 255-B);
                 }
             });

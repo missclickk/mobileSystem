@@ -1,8 +1,6 @@
 package com.example.firsttry.view;
 
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -14,7 +12,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.example.firsttry.viewmodel.ChangeSettings;
-import com.example.firsttry.viewmodel.Paint;
 import com.example.firsttry.R;
 import com.example.firsttry.model.HistoryDB;
 

@@ -14,9 +14,11 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.firsttry.model.ServiceDB;
 import com.example.firsttry.viewmodel.CounterService;
 import com.example.firsttry.viewmodel.Files;
 import com.example.firsttry.R;
+import com.example.firsttry.viewmodel.ServiceFacade;
 
 public class ServiceActivity extends AppCompatActivity {
 
@@ -61,11 +63,9 @@ public class ServiceActivity extends AppCompatActivity {
     }
 
     public void startService(){
-        number=findViewById(R.id.Number);
         PendingIntent pendingIntent = createPendingResult(COUNTER_SERVICE, new Intent(), 0);
         Intent intent = new Intent(this, CounterService.class);
         intent.putExtra(PENDING_INTENT_KEY, pendingIntent);
-        intent.putExtra(RAND_MAX,Integer.parseInt(number.getText().toString()));
         startService(intent);
     }
 
@@ -82,11 +82,11 @@ public class ServiceActivity extends AppCompatActivity {
                     Toast.makeText(this, getResources().getString(R.string.process_start), Toast.LENGTH_SHORT).show();
                     break;
                 case COUNTER_ANSWER:
-                    int randNumber = data.getIntExtra(COUNTER_ANSWER_KEY, 0);
-                    Toast.makeText(this, getResources().getString(R.string.rand_number, randNumber), Toast.LENGTH_SHORT).show();
+                    int[] responseArray = data.getIntArrayExtra(COUNTER_ANSWER_KEY);
+                    Toast.makeText(this, getResources().getString(R.string.rand_number, responseArray[1],responseArray[0]), Toast.LENGTH_SHORT).show();
                     Files files=new Files(getApplicationContext());
-                    files.writeFile(randNumber);
-
+                    files.writeFile(responseArray[0]);
+                    ServiceFacade.addItem(getApplicationContext(),new ServiceDB(responseArray[0]));
                     break;
                 case COUNTER_FINISH:
                     Toast.makeText(this, getResources().getString(R.string.process_stop), Toast.LENGTH_SHORT).show();
