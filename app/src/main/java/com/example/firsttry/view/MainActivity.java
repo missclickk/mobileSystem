@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
            getMenuInflater().inflate(R.menu.menu_main, menu);
-           for(int i=0;i<menu.size()-1;i++)
+           for(int i=0;i<menu.size()-2;i++)
                if(menuHideElements[i]==1)
                    menu.getItem(i).setVisible(false);
            return true;
@@ -151,6 +151,11 @@ public class MainActivity extends AppCompatActivity {
                 intent=new Intent(this, DBactivity.class);
                 startActivity(intent);
                 break;
+            case R.id.open_animation_item:
+                intent=new Intent(this, AnimationActivity.class);
+                startActivity(intent);
+                break;
+
         }
         return super.onOptionsItemSelected(item);
     }

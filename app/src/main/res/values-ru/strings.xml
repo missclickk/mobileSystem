@@ -21,4 +21,6 @@
     <string name="databaseBox">БАЗА ДАННЫХ</string>
     <string name="referenceBox">ССЫЛКА</string>
     <string name="backProcessBox">СЕРВИС</string>
+<string name="allAnimation">ВСЕ АНИМАЦИИ</string>
+<string name="allAnimationFIFO">ВСЕ АНИМАЦИИ ПО ОЧЕРЕДИ</string>
 </resources>

@@ -25,6 +25,12 @@
     <string name="databaseBox">DATABASE</string>
     <string name="referenceBox">REFERENCE</string>
     <string name="backProcessBox">SERVICE</string>
+    <string name="alphaAnimation" translatable="false">ALPHA</string>
+    <string name="rotateAnimation" translatable="false">ROTATE</string>
+    <string name="scaleAnimation" translatable="false">SCALE</string>
+    <string name="translateAnimation" translatable="false">TRANSLATE</string>
+    <string name="allAnimation">ALL ANIMATION</string>
+    <string name="allAnimationFIFO">ALL ANIMATION FIFO</string>
     <string-array name="size">
         <item>5</item>
         <item>10</item>

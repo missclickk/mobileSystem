@@ -19,4 +19,7 @@
     <item
         android:id="@+id/settings"
         android:title="settings" />
+    <item
+        android:id="@+id/open_animation_item"
+        android:title="animation" />
 </menu>
